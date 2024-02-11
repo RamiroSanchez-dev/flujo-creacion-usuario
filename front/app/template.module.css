@@ -1,0 +1,36 @@
+.rootLayoutBody {
+  position: relative;
+  min-height: 100vh; 
+}
+.body {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(var(--white));
+  padding: 10px;
+  z-index: 1000; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.NavTab{
+  display: flex;
+  justify-content: space-between;
+}
+
+.NavButton {
+  padding: 10px;
+  background-color: rgb(var(--white));
+  border: 0px;
+  border-bottom: 2px solid;
+  border-color: rgb(var(--orange));
+  color: rgb(var(--orange));
+}
+
+.NavButton:hover {
+  padding: 10px;
+  background-color: rgb(var(--orange));
+  border-color: rgb(var(--orange));
+  color: rgb(var(--white));
+}
