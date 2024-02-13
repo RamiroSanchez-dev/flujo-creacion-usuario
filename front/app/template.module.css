@@ -34,3 +34,8 @@
   border-color: rgb(var(--orange));
   color: rgb(var(--white));
 }
+
+.userName{
+  padding: 10px;
+  color: rgb(var(--orange));
+}

@@ -140,6 +140,11 @@ input, select{
   padding: 5px;
 }
 
+.errorMessage{
+  color: rgb(var(--black));
+  text-align: center;
+}
+
 .buttom, .buttom:disabled:hover{
   background-color: rgb(var(--orange));
   color:rgb(var(--white));

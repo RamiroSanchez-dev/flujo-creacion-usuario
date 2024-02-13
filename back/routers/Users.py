@@ -44,13 +44,13 @@ def check_app_password(
     try:
         user = db.query(Users).filter(Users.email == email).first()
         if user:
-            raise HTTPException(status_code=400, detail="El usuario ya está creado")
+            raise HTTPException(status_code=400, detail="Existe un usuario creado con dicho mail")
         else:
             new_user = Users(email=email, fullName=fullName, age=age,userName =userName,contry=contry )
             db.add(new_user)
             db.commit()
             user = new_user
-                
+
         expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
         token_data = {"sub": user.email, "exp": expires_delta.total_seconds()}
         session_token = create_session_token(token_data, expires_delta)

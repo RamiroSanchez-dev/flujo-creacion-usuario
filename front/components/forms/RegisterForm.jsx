@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import './styles.css';
+import { createUser } from '@/Presenters/Users';
+import Cookies from 'js-cookie';
 
 export const RegisterForm = () => {
+  const [registerError, setregisterError] = useState(null)
     const router = useRouter()
     const [formData, setFormData] = useState({
         email: '',
         fullName: '',
         age: '',
         userName: '',
-        contry: ''
+        country: ''
       });
     
       const handleChange = (e) => {
@@ -17,27 +20,40 @@ export const RegisterForm = () => {
         setFormData({ ...formData, [name]: value });
       };
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Formulario enviado:', formData);
-        
-        setFormData({
+        let {mensaje, cookie} = await createUser(formData);
+        if(mensaje == "OK"){
+          Cookies.set('userDELI', JSON.stringify(cookie), {
+            expires: 1,
+            path: '/',
+            domain: 'localhost',
+            secure: true, 
+            httpOnly: false, // Esta opcion deberia ir en true pero al estar en localhost no te permite
+          });
+
+          setFormData({
           email: '',
           fullName: '',
           age: '',
           userName: '',
-          contry: ''
-        });
-        router.push('registration/success')
+          country: ''
+          });
+          router.push('registration/success')
+        }else{
+          setregisterError(mensaje)
+        }
+        
       };
-    
+
       const isFormValid = () => {
         return (
           formData.email !== '' &&
           formData.fullName !== '' &&
           formData.age !== '' &&
           formData.userName !== '' &&
-          formData.contry !== ''
+          formData.country !== ''
         );
       };
     
@@ -60,8 +76,8 @@ export const RegisterForm = () => {
           <input type="text" id="userName" name="userName"  value={formData.userName} onChange={handleChange} />
         </div>
         <div className="form-group">
-          <label htmlFor="contry">País:</label>
-          <select id="contry" name="contry" value={formData.contry} onChange={handleChange}>
+          <label htmlFor="country">País:</label>
+          <select id="country" name="country" value={formData.country} onChange={handleChange}>
             <option value="">Selecciona un país</option>
             <option value="AR">Argentina</option>
             <option value="BR">Brasil</option>
@@ -69,6 +85,10 @@ export const RegisterForm = () => {
             
           </select>
         </div>
+        {registerError&&
+          <div className='errorMessage'>
+            {registerError}
+          </div>}
           <button type="submit" className='buttom' disabled={!isFormValid()}>
             Enviar
           </button>
