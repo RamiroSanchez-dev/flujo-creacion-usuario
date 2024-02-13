@@ -11,6 +11,7 @@
   
   --orange : 255,80,35;
   --white: #f5f9fd;
+  --black: 0,0,0;
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,
@@ -107,17 +108,41 @@ a {
     color-scheme: dark;
   }
 }
-
+label{
+  color: rgb(var(--orange));
+  margin-bottom: 3px;
+}
 .sectionFrame{
   background-color: white;
   border-radius: 25px;
+  padding: 15px;
+  margin: 20px;
 }
 .title{
   color: rgb(var(--orange));
+  text-align: center;
+  margin:10px 0;
 }
 
-.buttom{
+.text{
+  color: rgb(var(--black));
+  text-align: center;
+  font-size: medium;
+  font-size: 20px;
+  margin:10px 0;
+}
+
+input, select{
+  border: solid rgb(var(--orange));
+  border-radius: 10px;
+  background-color: rgb(var(--white));
+  color: rgb(var(--orange));
+  padding: 5px;
+}
+
+.buttom, .buttom:disabled:hover{
   background-color: rgb(var(--orange));
+  color:rgb(var(--white));
   border-radius: 15px;
   padding: 10px;
   font-size: 15px;
@@ -134,4 +159,7 @@ a {
   font-size: 15px;
   margin: 10px;
 }
-
+.buttom:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}

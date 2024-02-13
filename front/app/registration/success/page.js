@@ -1,11 +1,9 @@
 'use client'
 import Image from "next/image";
-import styles from "./page.module.css";
-import { RegisterForm } from "@/components/forms/RegisterForm";
+import styles from "../page.module.css";
 
 
 export default function Home() {
-  
   return (
     <main className={styles.main}>
       
@@ -22,9 +20,8 @@ export default function Home() {
 
 
       </div>
-      <div className="sectionFrame">
-        <RegisterForm/>
-      </div>
+      <h1 className="title" >¡Bienvenido a DELI!</h1>
+      <h3 className="text" >Muchas gracias por unirte a nuestra comunidad, pronto te estara llegando un mail con mas detalles</h3>
     </main>
   );
 }
