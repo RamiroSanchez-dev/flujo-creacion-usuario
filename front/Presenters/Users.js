@@ -1,17 +1,6 @@
 import AppConstants from "@/Constants/AppConstants";
 import axios from "axios";
 
-function createCookie(name,token){
-    const cookieOptions = {
-        expires: new Date(Date.now() + 86400e3),
-        path: '/',
-        domain: 'localhost',
-        secure: true,
-        httpOnly: true, 
-      };
-    document.cookie = userCookie
-}
-
 export async function createUser(newUser){
     
   

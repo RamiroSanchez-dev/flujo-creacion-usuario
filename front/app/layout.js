@@ -5,8 +5,8 @@ import styles from './layout.module.css';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Registro DELI",
-  description: "Pagina de registro de DELI",
+  title: "Bienvenido a DELI",
+  description: "DELI es una plataforma que potencia tu local, agilizando ymejorando su gestión",
 };
 
 export default function RootLayout({ children }) {
@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     <body className={[styles.rootLayoutBody]}>
       {children}
       <div className={styles.footer}>
-        <p>Hola, soy el footer</p>
+        <p>© 2024 Deli. Todos los derechos reservados</p>
       </div>
     </body>
   </html>

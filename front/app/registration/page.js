@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       
-
+      <title>Registro de usuario DELI</title>
       <div >
         <Image
           className={styles.logo}

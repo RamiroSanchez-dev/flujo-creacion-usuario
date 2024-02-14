@@ -11,7 +11,9 @@ export default function Template({ children }) {
     useEffect(() => {
         const cookieValue = Cookies.get('userDELI');
         console.log(cookieValue)
-        setUserLogged(JSON.parse(cookieValue))
+        if(cookieValue){
+            setUserLogged(JSON.parse(cookieValue))
+        }
     }, []);
 
     return (
