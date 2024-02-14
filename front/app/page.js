@@ -22,7 +22,7 @@ export default function Home() {
         
       </div>
       <div >
-        <h1 className="title" >Bienvenido a DELI, una herramienta que va a lelvar tu negocio al proximo nivel</h1>
+        <h1 className="title" >Bienvenido a DELI, una herramienta que va a llevar tu negocio al próximo nivel</h1>
         <div className={[styles.center]}>
         <Link className="buttom" style={{fontSize:'20px'}} href="/registration">Empieza a usarla ya!</Link>
 
