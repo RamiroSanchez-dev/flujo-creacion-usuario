@@ -6,7 +6,9 @@ from sqlalchemy.orm import aliased
 from fastapi.security import OAuth2PasswordBearer
 from datetime import datetime, timedelta
 import jwt
+from mails.Mails import send_simple_message
 router = APIRouter()
+
 
 API_TOKEN = "5edxbab5-c03f-46f0-aca2-4d75044c674c"
 SECRET_KEY = "clave_secreta_deli"
@@ -51,6 +53,7 @@ def check_app_password(
             db.commit()
             user = new_user
 
+        send_simple_message(fullName, email)
         expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
         token_data = {"sub": user.email, "exp": expires_delta.total_seconds()}
         session_token = create_session_token(token_data, expires_delta)
@@ -61,3 +64,5 @@ def check_app_password(
         raise HTTPException(status_code=500, detail=str(e))
     finally:
         db.close()
+
+
